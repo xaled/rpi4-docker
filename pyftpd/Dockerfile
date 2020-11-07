@@ -1,4 +1,5 @@
 FROM arm64v8/python:alpine
+LABEL maintainer="kh.grandi@gmail.com"
 
 RUN pip install --no-cache-dir pyftpdlib
 
