@@ -1,0 +1,8 @@
+/.idea/
+/transmission/
+/vsftpd/
+/pyftpd/pyftpd.log
+/pyftpd/data
+/pyftpd/logs
+/pyftpd/.env
+/rsync.sh
