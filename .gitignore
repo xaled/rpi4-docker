@@ -1,8 +1,11 @@
 /.idea/
-/transmission/
 /vsftpd/
 /pyftpd/pyftpd.log
 /pyftpd/data
 /pyftpd/logs
 /pyftpd/.env
+/transmission/config
+/transmission/data
+/transmission/logs
+/transmission/.env
 /rsync.sh

@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  transmission:
+    image: xaled/transmission:1.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: "${PROJECT_NAME}-transmission"
+    environment:
+      - TRANSMISSION_DEBUG
+      - TRANSMISSION_RPC_AUTH
+      - TRANSMISSION_USERNAME
+      - TRANSMISSION_PASSWORD
+      - TRANSMISSION_RPC_WHITELIST_ENABLED
+      - TRANSMISSION_RPC_WHITELIST
+    ports:
+      - "${TRANSMISSION_RPC_PORT-0.0.0.0:9091}:9091"
+      - "${TRANSMISSION_PEER_PORT-0.0.0.0:51413}:51413"
+      - "${TRANSMISSION_PEER_PORT-0.0.0.0:51413}:51413/udp"
+    volumes:
+      - "./app:/app"
+      - "${TRANSMISSION_DOWNLOADS-./data/downloads}:/downloads"
+      - "${TRANSMISSION_INCOMPLETE_DOWNLOADS-./data/incomplete}:/incomplete-downloads"
+      - "${TRANSMISSION_CONFIG-./config}:/etc/transmission-daemon"
+      - "${TRANSMISSION_LOGS-./logs}:/var/log/transmission"
+    restart: unless-stopped
